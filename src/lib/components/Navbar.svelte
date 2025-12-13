@@ -1,5 +1,7 @@
 <script>
-  import { Menu, X } from "lucide-svelte";
+  import { Menu, X, User } from "lucide-svelte";
+
+  export let user;
 
   let open = false;
 
@@ -29,13 +31,34 @@
       {/each}
     </ul>
 
-    <div class="hidden md:flex gap-2">
-      <button class="border border-gray-700 rounded py-1 px-2 text-xs">
-        Sign In
-      </button>
-      <button class="bg-white text-black rounded py-1 px-2 text-xs">
-        Sign Up
-      </button>
+    <div class="hidden md:flex gap-2 items-center">
+      {#if user}
+        <!-- Logged in user -->
+        <div class="flex items-center gap-2 px-3 py-1 border border-gray-700 rounded">
+          <User class="size-4" />
+          <span class="text-sm">{user.name || user.email || user.username || 'User'}</span>
+        </div>
+        <form method="POST" action="/api/auth/logout">
+          <button
+            type="submit"
+            class="border hover:opacity-90 cursor-pointer border-gray-700 rounded py-1 px-2 text-xs"
+          >
+            Sign Out
+          </button>
+        </form>
+      {:else}
+        <!-- Not logged in -->
+        <button
+          class="border hover:opacity-90 cursor-pointer border-gray-700 rounded py-1 px-2 text-xs"
+        >
+          <a href="/login">Sign In</a>
+        </button>
+        <button
+          class="bg-white hover:opacity-90 cursor-pointer text-black rounded py-1 px-2 text-xs"
+        >
+          <a href="/signup">Sign Up</a>
+        </button>
+      {/if}
     </div>
 
     <!-- Mobile menu button -->
@@ -70,13 +93,29 @@
           {/each}
         </ul>
 
-        <div class="flex gap-2 pt-2">
-          <button class="flex-1 border border-gray-700 rounded py-2 text-sm">
-            Sign In
-          </button>
-          <button class="flex-1 bg-white text-black rounded py-2 text-sm">
-            Sign Up
-          </button>
+        <div class="pt-2">
+          {#if user}
+            <!-- Logged in user - mobile -->
+            <div class="flex items-center gap-2 px-3 py-2 border border-gray-700 rounded mb-2">
+              <User class="size-4" />
+              <span class="text-sm">{user.name || user.email || user.username || 'User'}</span>
+            </div>
+            <form method="POST" action="/api/auth/logout">
+              <button type="submit" class="w-full border border-gray-700 rounded py-2 text-sm">
+                Sign Out
+              </button>
+            </form>
+          {:else}
+            <!-- Not logged in - mobile -->
+            <div class="flex gap-2">
+              <button class="flex-1 border border-gray-700 rounded py-2 text-sm">
+                <a href="/login" class="block">Sign In</a>
+              </button>
+              <button class="flex-1 bg-white text-black rounded py-2 text-sm">
+                <a href="/signup" class="block">Sign Up</a>
+              </button>
+            </div>
+          {/if}
         </div>
       </div>
     </div>

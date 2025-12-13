@@ -1,6 +1,8 @@
 <script lang="ts">
   import { Plus, RefreshCcw, SendHorizonal } from "lucide-svelte";
 
+  export let data;
+
   let selectedFile: File | null = null;
 
   function handleFile(e: Event) {
@@ -11,7 +13,7 @@
 
 <section class="flex flex-col gap-6 max-w-3xl mx-auto px-4 py-12 sm:py-20">
   <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center">
-    What do you want to create?
+    What do you want to create ?
   </h1>
 
   <div class="border border-gray-700 rounded-2xl p-4 flex flex-col gap-6">

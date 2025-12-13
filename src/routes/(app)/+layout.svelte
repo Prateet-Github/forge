@@ -2,14 +2,20 @@
   import favicon from "$lib/assets/favicon.svg";
   import Navbar from "$lib/components/Navbar.svelte";
 
-  let { children } = $props();
+  let { data, children } = $props();
+  
+  // Add this to see what's being passed
+  console.log('Layout data:', data);
+  console.log('User:', data.user);
 </script>
 
 <svelte:head>
   <link rel="icon" href={favicon} />
 </svelte:head>
 
-<Navbar></Navbar>
+<!-- ✅ Now use data.user -->
+<Navbar user={data.user} />
+
 <main
   class="min-h-screen w-full flex justify-center items-center border rounded-2xl border-gray-800"
 >
