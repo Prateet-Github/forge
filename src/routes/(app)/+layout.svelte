@@ -3,17 +3,15 @@
   import Navbar from "$lib/components/Navbar.svelte";
 
   let { data, children } = $props();
-  
-  // Add this to see what's being passed
-  console.log('Layout data:', data);
-  console.log('User:', data.user);
+
+  console.log("Layout data:", data);
+  console.log("User:", data.user);
 </script>
 
 <svelte:head>
   <link rel="icon" href={favicon} />
 </svelte:head>
 
-<!-- ✅ Now use data.user -->
 <Navbar user={data.user} />
 
 <main

@@ -11,7 +11,7 @@ export const actions = {
       password: data.get("password"),
     };
 
-    // basic validation
+  
     if (Object.values(payload).some((v) => !v)) {
       return fail(400, { error: "All fields are required" });
     }
@@ -26,7 +26,7 @@ export const actions = {
       return fail(400, { error: "Signup failed" });
     }
 
-    // ✅ SUCCESS → redirect to home
+   
     throw redirect(303, "/");
   },
 };

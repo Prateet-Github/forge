@@ -27,15 +27,12 @@
       class="flex flex-col sm:flex-row sm:items-center gap-4 sm:justify-between"
     >
       <div class="flex items-center gap-3">
-        <!-- Hidden file input -->
         <input type="file" id="file" class="hidden" on:change={handleFile} />
 
-        <!-- Upload trigger -->
         <label for="file" class="cursor-pointer">
           <Plus class="size-6 hover:opacity-80" />
         </label>
 
-        <!-- File name -->
         {#if selectedFile}
           <span class="text-sm text-gray-400 truncate max-w-35 sm:max-w-xs">
             {selectedFile.name}
@@ -43,7 +40,6 @@
         {/if}
       </div>
 
-      <!-- Send button -->
       <button class="self-end sm:self-auto">
         <SendHorizonal class="size-5 hover:opacity-80 cursor-pointer" />
       </button>
