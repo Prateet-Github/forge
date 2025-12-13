@@ -10,6 +10,8 @@
 </svelte:head>
 
 <Navbar></Navbar>
-<main class="min-h-screen">
+<main
+  class="min-h-screen w-full flex justify-center items-center border rounded-2xl border-gray-800"
+>
   {@render children()}
 </main>
