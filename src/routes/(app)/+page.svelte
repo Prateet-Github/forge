@@ -18,6 +18,7 @@
     "Create a pricing page with 3 tiers",
     "Make a weather dashboard with charts",
     "Design a blog post editor",
+    "Make a Navbar for a Developer Portfolio"
   ];
 
   function handleFile(e: Event) {
